@@ -10,6 +10,7 @@ const Login = (): React.JSX.Element => {
   const navigate = useNavigate();
   const [emailId, setEmailId] = useState<string>('user5@gmail.com');
   const [password, setPassword] = useState<string>('User@123');
+  const [error, setError] = useState<string>('');
 
   const handleLogin = async (): Promise<void> => {
     try {
@@ -19,7 +20,9 @@ const Login = (): React.JSX.Element => {
       }, { withCredentials: true })
       dispatch(addUser(response.data))
       navigate('/feed')
-    } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setError(error?.response?.data)
       console.error(error)
     }
   }
@@ -43,6 +46,7 @@ const Login = (): React.JSX.Element => {
               <input type="text" className="input input-bordered w-full max-w-xs" value={password} onChange={(e: ChangeEvent<HTMLInputElement>): void => setPassword(e.target.value)} />
             </label>
           </div>
+          <p className='text-red-500'>{error}</p>
           <div className="card-actions justify-center m-2">
             <button className="btn btn-primary" onClick={handleLogin}>Login</button>
           </div>
