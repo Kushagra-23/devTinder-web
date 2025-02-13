@@ -13,6 +13,7 @@ const Login = (): React.JSX.Element => {
   const [error, setError] = useState<string>('');
 
   const handleLogin = async (): Promise<void> => {
+    setError('')
     try {
       const response = await axios.post(BASE_URL + "/login", {
         emailId,
