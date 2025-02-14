@@ -25,7 +25,7 @@ const Connections = (): React.JSX.Element => {
 
   if (!connections) return <></>;
 
-  if (connections.length === 0) return <h1 className='text-bold text-2xl'>No Cconnections found</h1>;
+  if (connections.length === 0) return <h1 className='text-bold text-2xl'>No Connections found</h1>;
 
   return (
     <div className='text-center my-10'><h1 className='text-bold text-3xl text-white'>Connections</h1>
