@@ -3,17 +3,25 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL } from '../utils/constants';
-import { addRequests } from '../utils/requestSlice';
+import { addRequests, removeRequests } from '../utils/requestSlice';
 
 const Requests = (): React.JSX.Element => {
 
   const dispatch = useDispatch();
   const requests = useSelector((store: any) => store.requests)
 
+  const reviewRequest = async (status: string, id: string) => {
+    try {
+      await axios.post(BASE_URL + "/request/review/" + status + "/" + id, {}, { withCredentials: true })
+      dispatch(removeRequests(id))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const getRequests = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/requests/received", { withCredentials: true })
-      console.log(res)
       dispatch(addRequests(res.data.connectionRequests))
     } catch (error) {
       console.error(error)
@@ -27,7 +35,7 @@ const Requests = (): React.JSX.Element => {
 
   if (!requests) return <></>;
 
-  if (requests.length === 0) return <h1 className='text-bold text-2xl'>No requests found</h1>;
+  if (requests.length === 0) return <h1 className='flex justify-center text-bold text-2xl'>No requests found</h1>;
 
   return (
     <div className='text-center my-10'><h1 className='text-bold text-3xl text-white'>Requests</h1>
@@ -44,8 +52,8 @@ const Requests = (): React.JSX.Element => {
               <p>{about}</p>
             </div>
             <div>
-              <button className="btn btn-primary mx-2">Reject</button>
-              <button className="btn btn-secondary mx-2">Accept</button>
+              <button className="btn btn-primary mx-2" onClick={() => reviewRequest('rejected', request._id)}>Reject</button>
+              <button className="btn btn-secondary mx-2" onClick={() => reviewRequest('accepted', request._id)}>Accept</button>
             </div>
           </div>
         )

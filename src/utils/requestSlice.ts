@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from "@reduxjs/toolkit";
 
 const requestSlice = createSlice({
@@ -7,8 +8,9 @@ const requestSlice = createSlice({
     addRequests: (__, action) => {
       return action.payload;
     },
-    removeRequests: () => {
-      return null;
+    removeRequests: (state: any, action) => {
+      const newArray = state.filter((r: any) => r._id !== action.payload )
+      return newArray
     },
   },
 });

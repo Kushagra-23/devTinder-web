@@ -27,14 +27,7 @@
 - Edit profile with save functionality added
 - See all my connections
 - See all my connections requests
-
-
-
-
-
-
-
-
+- Feature - Accept/Reject connection request
 
 
 
