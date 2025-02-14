@@ -25,6 +25,7 @@
 - Get the feed and add in store
 - Build the user card on feed
 - Edit profile with save functionality added
+- See all my connections
 
 
 
