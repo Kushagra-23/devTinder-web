@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from "@reduxjs/toolkit";
 
 const feedSlice = createSlice({
@@ -7,8 +8,9 @@ const feedSlice = createSlice({
     addFeed: (__, action) => {
       return action.payload;
     },
-    removeFeed: () => {
-      return null;
+    removeFeed: (state: any, action) => {
+      const newArray = state.filter((r: any) => r._id !== action.payload )
+      return newArray
     },
   },
 });

@@ -28,6 +28,9 @@
 - See all my connections
 - See all my connections requests
 - Feature - Accept/Reject connection request
+- Send/Ignore the user card from the feed
+- Sign up user added
+- Bug fixes
 
 
 
