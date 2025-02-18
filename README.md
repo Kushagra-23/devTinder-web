@@ -39,3 +39,28 @@ Body
     Route=/ => Feed
     Route=/connections => Connections
     Route=/profile => Profile
+
+
+Deployment
+
+- Sign up on AWS
+- Launch instance
+- chmod 400 <secret>.pem
+- connected with ssh command
+- install node version with same node version for project 
+	- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+	- close terminal
+	- restart terminal
+	- nvm install <node_version>
+- git clone repo
+- Frontend 
+		- npm install => dependencies install
+		- npm run build
+		- sudo apt update - to update system dependencies
+		- sudo apt install nginx - to install nginx
+		- sudo systemctl start nginx
+		- sudo systemctl enable nginx
+		- Copy code from dist(build files) to /var/www/html/
+		- sudo scp -r dist/* /var/www/html/
+		- enable port 80 of your instance
+		- access frontend using Public IPv4 address of your instance
