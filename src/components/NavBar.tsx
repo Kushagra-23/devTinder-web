@@ -44,6 +44,11 @@ const NavBar = (): React.JSX.Element => {
               Profile
             </Link>
           </li>
+          <li>
+            <Link to='/premium' className="text-lg tracking-tight justify-between">
+              Premium
+            </Link>
+          </li>
           {user && <div className="flex flex-row items-center gap-2 ml-5">
             <div className="form-control text-lg tracking-tight">Welcome, {user.firstName}</div>
             <div className="dropdown dropdown-end mx-5 flex">

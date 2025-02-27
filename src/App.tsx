@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Body from "./components/Body";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import { Connections, Feed, Login, Profile, Requests, Signup } from "./pages";
+import { Connections, Feed, Login, Premium, Profile, Requests, Signup } from "./pages";
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
               <Route path="/feed" element={<Feed />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />
+              <Route path="/premium" element={<Premium />} />
             </Route>
           </Routes>
         </BrowserRouter>
