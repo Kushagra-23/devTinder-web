@@ -4,6 +4,7 @@ import { BASE_URL } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux';
 import { addConnections } from '../utils/connectionsSlice';
 import { LoadingComponent } from '../components/LoadingComponent';
+import { Link } from 'react-router-dom';
 
 export const Connections = (): React.JSX.Element => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export const Connections = (): React.JSX.Element => {
   return (
     <div className='text-center my-10'><h1 className='text-bold text-3xl'>Connections</h1>
       {connections.map((connection: any) => {
-        const { photoUrl, firstName, lastName, age, gender, about } = connection
+        const { photoUrl, firstName, lastName, age, gender, about, _id } = connection
         return (
           <div className='flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto'>
             <div>
@@ -49,6 +50,7 @@ export const Connections = (): React.JSX.Element => {
               {age && gender && <p text-base font-medium>{age + ", " + gender}</p>}
               <p className='break-words'>{about}</p>
             </div>
+            <Link to={"/chat/" + _id}><button className='btn btn-primary'>Chat</button></Link>
           </div>
         )
       })}
